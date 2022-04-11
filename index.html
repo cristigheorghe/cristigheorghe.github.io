@@ -13,7 +13,6 @@
 
     <button onclick="Calendly.showPopupWidget('https://calendly.com/cristitalent/30min?month=2022-04&hide_event_type_details=1&hide_landing_page_details=1&hide_gdpr_banner=1&name=Cristi%20Talent&email=cristi.gheorghe@talentroom.com');return false;" type="button">Launch Calendly</button>
 
-    <!-- Calendly inline widget begin -->
     <!--
     <button onclick="
       Calendly.initInlineWidget({
@@ -28,7 +27,6 @@
 
     <div id="calendly-div" class="calendly-inline-widget" style="min-width:320px;height:680px;" data-auto-load="false">
     </div>
-
     -->
 
     <div style="width: 270px; background: #FFC805; padding: 10px; margin-top: 20px;">
@@ -37,7 +35,6 @@
       </ul>
     </div>
 
-    <!-- Calendly inline widget end -->
     <script type="text/javascript">
       function isCalendlyEvent(e) {
         return e.origin === "https://calendly.com" && e.data.event && e.data.event.indexOf("calendly.") === 0;
