@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendly PoC</title>
+    <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+  </head>
+  <body>
+    <h1>Calendly PoC</h1>
+
+    <button onclick="Calendly.showPopupWidget('https://calendly.com/cristitalent/30min?month=2022-04&hide_event_type_details=1&hide_landing_page_details=1&hide_gdpr_banner=1&name=Cristi%20Talent&email=cristi.gheorghe@talentroom.com');return false;" type="button">Launch Calendly</button>
+
+    <!-- Calendly inline widget begin -->
+    <!--
+    <button onclick="
+      Calendly.initInlineWidget({
+        url: 'https://calendly.com/cristitalent/30min?month=2022-04&hide_event_type_details=1&hide_landing_page_details=1&hide_gdpr_banner=1',
+        parentElement: document.getElementById('calendly-div'),
+        prefill: {
+          name: 'Cristi Talent',
+          email: 'cristi.gheorghe@talentroom.com'
+        }
+      });
+    " type="button">Inline Embed</button>
+
+    <div id="calendly-div" class="calendly-inline-widget" style="min-width:320px;height:680px;" data-auto-load="false">
+    </div>
+
+    -->
+
+    <div style="width: 270px; background: #FFC805; padding: 10px; margin-top: 20px;">
+      <b>Triggered Events:</b>
+      <ul id="my-events">
+      </ul>
+    </div>
+
+    <!-- Calendly inline widget end -->
+    <script type="text/javascript">
+      function isCalendlyEvent(e) {
+        return e.origin === "https://calendly.com" && e.data.event && e.data.event.indexOf("calendly.") === 0;
+      };
+       
+      window.addEventListener("message", function(e) {
+        if(isCalendlyEvent(e)) {
+          /* Example to get the name of the event */
+          console.log("Event name:", e.data.event);
+                    
+          const node = document.createElement("li");
+          const textnode = document.createTextNode(e.data.event);
+          node.appendChild(textnode);
+          document.getElementById("my-events").appendChild(node);
+        }
+      });
+    </script>
+  </body>
+</html>
